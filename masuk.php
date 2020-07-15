@@ -7,7 +7,7 @@ if (!empty($_POST)) {
     $q = $conn->prepare("SELECT * FROM pengguna WHERE username='$username'");
     $q->execute();
     if ($q->rowCount() > 0) {
-        $q = $conn->prepare("SELECT * FROM pengguna WHERE username='$username' AND password=SHA1('$password', 0)");
+        $q = $conn->prepare("SELECT * FROM pengguna WHERE username='$username' AND password=SHA2('$password', 0)");
         $q->execute();
         if ($q->rowCount() > 0) {
             $q = $conn->prepare('SELECT UUID()');
