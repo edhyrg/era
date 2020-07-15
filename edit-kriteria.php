@@ -37,9 +37,9 @@ include 'includes/header.php';
     <select id="atribut" name="atribut" class="form-control mb-2 mr-sm-2">
         <?php
         foreach (data_atribut() as $x) {
-            if ($x['id'] == $atribut) $s = ' selected';
+            if ($x['id_atribut'] == $atribut) $s = ' selected';
             else $s = '';
-            echo "<option$s value=\"{$x['id']}\">{$x['nama']}</option>";
+            echo "<option$s value=\"{$x['id_atribut']}\">{$x['nama']}</option>";
         }
         ?>
     </select>

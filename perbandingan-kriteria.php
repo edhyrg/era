@@ -178,7 +178,7 @@ if (!empty($_POST)) {
         for ($x = 0; $x < count($kriteria); $x++) {
             $b = $matrix_eign->getData()[$x][0];
             $id = $kriteria[$x][0];
-            $q = $conn->prepare("UPDATE kriteria SET bobot='$b' WHERE id='$id'");
+            $q = $conn->prepare("UPDATE kriteria SET bobot='$b' WHERE id_kriteria='$id'");
             $q->execute();
         }
     } else {

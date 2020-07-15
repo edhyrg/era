@@ -24,7 +24,7 @@ include './includes/header.php';
         <select id="atribut" name="atribut" class="form-control mb-2 mr-sm-2">
             <?php
             foreach (data_atribut() as $x) {
-                echo "<option value=\"{$x['id']}\">{$x['nama']}</option>";
+                echo "<option value=\"{$x['id_atribut']}\">{$x['nama']}</option>";
             }
             ?>
         </select>

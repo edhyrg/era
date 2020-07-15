@@ -1,7 +1,10 @@
 <?php
 include './includes/api.php';
 akses_pengguna(array(1));
-@$id = $_GET['id'];
+@$idx = $_GET['id'];
+@$idx = $_GET['id'];
+$id = substr($idx, 0, -4);
+$periode = substr($idx, -4);
 if (!empty($_POST)) {
     $pesan_error = array();
     $idn = $_POST['idn'];
@@ -16,7 +19,7 @@ if (!empty($_POST)) {
     if (empty($pesan_error)) {
         $q = $conn->prepare("INSERT INTO nilai_alternatif VALUE ('$idn','$idk', '$nilai')");
         $q->execute();
-        header('Location: ./data-nilai-alternatif');
+        header("Location: ./data-nilai-alternatif?periode=$periode");
     }
 }
 include './includes/header.php';
@@ -37,7 +40,7 @@ include './includes/header.php';
         <label class="mr-sm-2" for="nilai">Nilai Alternatif</label>
         <input id="nilai" name="nilai" class="form-control mb-2 mr-sm-2" type="text">
         <button class="btn btn-primary" type="submit"><span class="fas fa-plus-circle"></span> Tambah</button>
-        <button class="btn btn-danger" type="reset" onclick="location.href='./data-nilai'"><span class="fas fa-times"></span> Batal</button>
+        <button class="btn btn-danger" type="reset" onclick="location.href='./data-nilai-alternatif?periode=<?php echo $periode ?>'"><span class="fas fa-times"></span> Batal</button>
         <?php if (!empty($pesan_error)) {
             echo '<hr><div class="alert alert-dismissable alert-danger"><ul>';
             foreach ($pesan_error as $x) {

@@ -26,7 +26,7 @@ if (count(data_alternatif2($periode)) > 0 & count(data_kriteria()) > 0 & cek_val
                 $n = nilai_alternatif($x[0], $y[0]);
                 echo "<td>$n</td>";
             }
-            echo "<td class=\"text-center\"><button onclick=\"location.href='./tambah-nilai?id={$x[0]}'\" class=\"btn btn-primary\"><span class=\"fas fa-plus\"></span> Tambah</button> <button onclick=\"hapus_nilai('{$x[0]}')\" class=\"btn btn-danger\"><span class=\"fas fa-trash-alt\"></span> Hapus</button></td>";
+            echo "<td class=\"text-center\"><button onclick=\"location.href='./tambah-nilai?id={$x[0]}$periode'\" class=\"btn btn-primary\"><span class=\"fas fa-plus\"></span> Tambah</button> <button onclick=\"hapus_nilai('{$x[0]}$periode')\" class=\"btn btn-danger\"><span class=\"fas fa-trash-alt\"></span> Hapus</button></td>";
             echo '</tr>';
             $no++;
         }
