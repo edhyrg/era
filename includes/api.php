@@ -1,5 +1,5 @@
 <?php
-$NAMA_DATABASE = 'tugas_spk3';
+$NAMA_DATABASE = 'era';
 $USERNAME_DATABASE = 'root';
 $PASSWORD_DATABASE = '';
 $conn = new PDO("mysql:host=localhost;dbname=$NAMA_DATABASE", $USERNAME_DATABASE, $PASSWORD_DATABASE);
@@ -108,6 +108,13 @@ function hasil($periode, $periode2)
 {
     global $conn;
     $q = $conn->prepare("SELECT h.hasil,h.periode, a.* FROM hasil h LEFT JOIN alternatif a ON a.id_alternatif=h.id_alternatif where h.pilih=1 and h.periode between $periode and $periode2");
+    $q->execute();
+    return @$q->fetchAll();
+}
+function hasil2($periode)
+{
+    global $conn;
+    $q = $conn->prepare("SELECT h.hasil,h.periode, a.* FROM hasil h LEFT JOIN alternatif a ON a.id_alternatif=h.id_alternatif where h.pilih=1 and h.periode=$periode");
     $q->execute();
     return @$q->fetchAll();
 }

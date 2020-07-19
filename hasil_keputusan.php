@@ -13,7 +13,7 @@ include './includes/header.php';
         <th>Pilih</th>
     </tr>
     <?php $no = 1;
-    foreach (gethasil($periode,) as $x) {
+    foreach (gethasil($periode) as $x) {
         echo "<tr>";
         echo "<td class=\"text-center\">$no</td><td>{$x[1]}</td><td class=\"text-center\">{$x[2]}</td><td class=\"text-center\"> ";
         if ($x[3] == '0') {

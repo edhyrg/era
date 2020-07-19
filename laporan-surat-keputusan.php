@@ -51,10 +51,10 @@ $pdf->ln();
 include './includes/api.php';
 // include './includes/header.php';
 akses_pengguna(array(1));
-if (count(data_alternatif()) > 0 && count(hasil($periode)) > 0) {
+if (count(data_alternatif()) > 0 && count(hasil2($periode)) > 0) {
 
 
-	$guru = hasil($periode);
+	$guru = hasil2($periode);
 	$id = "Kode Supplier        : " . $guru[0]['id_alternatif'];
 	$nama = "Nama Supplier       : " . $guru[0]['nama'];
 	$alamat = "Alamat                   : " . $guru[0]['alamat'];
