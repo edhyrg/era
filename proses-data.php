@@ -2,6 +2,7 @@
 include './includes/header.php';
 akses_pengguna(array(1));
 @$periode = $_GET['periode'];
+
 $q = $conn->prepare("DELETE FROM hasil WHERE periode='$periode'");
 $q->execute();
 ?>
@@ -17,7 +18,7 @@ $q->execute();
     </tr>
     <?php
     $data = array();
-    foreach (data_alternatif() as $x) {
+    foreach (data_alternatif3($periode) as $x) {
         echo "<tr><td>{$x[1]}</td>";
         foreach (data_kriteria() as $y) {
             $n = nilai_alternatif($x[0], $y[0]);
@@ -40,7 +41,7 @@ $q->execute();
     <?php
     $data_normalisasi = array();
     $data_hasil = array();
-    foreach (data_alternatif() as $x) {
+    foreach (data_alternatif3($periode) as $x) {
         echo "<tr><td>{$x[1]}</td>";
         foreach (data_kriteria() as $y) {
             if ($y[2] == 1) $n = round(nilai_alternatif($x[0], $y[0]) / max($data[$y[0]]), 4);
@@ -92,7 +93,7 @@ arsort($hasil);
                 @$nama = $data[1];
                 @$id =  $data[0];
                 echo "<tr id=\"baris-$id\"><td>$no</td><td>$nama</td><td>{$hasil[$x]}</td></tr>";
-                $simpan = $conn->prepare("INSERT INTO hasil VALUE ('$no', '$id','$hasil[$x]','$periode','')");
+                $simpan = $conn->prepare("INSERT INTO hasil VALUE ('', '$id','$hasil[$x]','$periode','')");
                 $simpan->execute();
 
                 $no++;

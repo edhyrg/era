@@ -2,8 +2,9 @@
 include './includes/header.php';
 akses_pengguna(array(1));
 @$periode = $_GET['periode'];
+@$periode2 = $_GET['periode2'];
 echo '<h5><span class="fas fa-table"></span> Laporan Nilai Alternatif</h5><hr>';
-if (count(data_alternatif2($periode)) > 0 & count(data_kriteria()) > 0 & cek_valid_bobot()) {
+if (count(data_alternatif2($periode, $periode2)) > 0 & count(data_kriteria()) > 0 & cek_valid_bobot()) {
 ?>
     <table class="table table-bordered table-sm table-striped small">
         <tr class="text-center">
@@ -15,7 +16,7 @@ if (count(data_alternatif2($periode)) > 0 & count(data_kriteria()) > 0 & cek_val
 
         </tr>
         <?php $no = 1;
-        foreach (data_alternatif2($periode) as $x) {
+        foreach (data_alternatif2($periode, $periode2) as $x) {
             echo "<tr><td class=\"text-center\">$no</td><td>{$x[1]}</td>";
             foreach (data_kriteria() as $y) {
                 $n = nilai_alternatif($x[0], $y[0]);
@@ -27,7 +28,7 @@ if (count(data_alternatif2($periode)) > 0 & count(data_kriteria()) > 0 & cek_val
         }
         ?>
     </table>
-    <button class="btn btn-primary" onclick="location.href='./laporan-cetak-nilai-alternatif?periode=<?php echo $periode; ?>'"><span class="fas fa-radiation"></span> Cetak Laporan</button>
+    <button class="btn btn-primary" onclick="location.href='./laporan-cetak-nilai-alternatif?periode=<?php echo $periode; ?>&periode2=<?php echo $periode2; ?>'"><span class="fas fa-radiation"></span> Cetak Laporan</button>
 <?php
 } else {
     if (count(data_kriteria()) < 1) echo '<div class="alert alert-dismissable alert-danger"><b>Data kriteria kosong</b>, silahkan hubungi Petugas.</div>';

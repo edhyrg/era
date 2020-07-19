@@ -90,24 +90,31 @@ function data_alternatif()
     $q->execute();
     return @$q->fetchAll();
 }
-function data_alternatif2($periode)
+function data_alternatif2($periode, $periode2)
 {
     global $conn;
-    $q = $conn->prepare("SELECT * FROM alternatif WHERE periode='$periode'");
+    $q = $conn->prepare("SELECT * FROM alternatif WHERE periode between $periode and $periode2");
     $q->execute();
     return @$q->fetchAll();
 }
-function hasil($periode)
+function data_alternatif3($periode)
 {
     global $conn;
-    $q = $conn->prepare("SELECT h.hasil, a.* FROM hasil h LEFT JOIN alternatif a ON a.id_alternatif=h.id_alternatif where h.pilih=1 and h.periode='$periode'");
+    $q = $conn->prepare("SELECT * FROM alternatif WHERE periode=$periode");
     $q->execute();
     return @$q->fetchAll();
 }
-function hasilall($periode)
+function hasil($periode, $periode2)
 {
     global $conn;
-    $q = $conn->prepare("SELECT h.hasil, a.* FROM hasil h LEFT JOIN alternatif a ON a.id_alternatif=h.id_alternatif where h.periode='$periode'");
+    $q = $conn->prepare("SELECT h.hasil,h.periode, a.* FROM hasil h LEFT JOIN alternatif a ON a.id_alternatif=h.id_alternatif where h.pilih=1 and h.periode between $periode and $periode2");
+    $q->execute();
+    return @$q->fetchAll();
+}
+function hasilall($periode, $periode2)
+{
+    global $conn;
+    $q = $conn->prepare("SELECT h.hasil, h.periode, a.* FROM hasil h LEFT JOIN alternatif a ON a.id_alternatif=h.id_alternatif where h.periode between $periode and $periode2");
     $q->execute();
     return @$q->fetchAll();
 }
@@ -193,19 +200,17 @@ function getPeriode()
 }
 function gethasil($periode)
 {
-
     global $conn;
-    $q = $conn->prepare("SELECT h.id_hasil, a.nama, h.hasil, h.pilih FROM hasil h left join alternatif a on h.id_alternatif=a.id_alternatif where h.periode='$periode'");
+    $q = $conn->prepare("SELECT h.id_hasil, a.nama, h.hasil, h.pilih FROM hasil h left join alternatif a on h.id_alternatif=a.id_alternatif where h.periode='$periode' ");
     $q->execute();
     @$data = $q->fetchAll();
     if ($data) return $data;
     else return array();
 }
-function gethasil2($periode)
+function gethasil2($periode, $periode2)
 {
-
     global $conn;
-    $q = $conn->prepare("SELECT h.id_hasil, a.nama, h.hasil, h.pilih FROM hasil h left join alternatif a on h.id_alternatif=a.id_alternatif where h.pilih=1 and h.periode='$periode'");
+    $q = $conn->prepare("SELECT h.id_hasil, a.nama, h. periode, h.hasil, h.pilih FROM hasil h left join alternatif a on h.id_alternatif=a.id_alternatif where h.pilih=1 and h.periode between '$periode' and '$periode2'");
     $q->execute();
     @$data = $q->fetchAll();
     if ($data) return $data;

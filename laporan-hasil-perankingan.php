@@ -2,10 +2,11 @@
 include './includes/header.php';
 akses_pengguna(array(1));
 @$periode = $_GET['periode'];
+@$periode2 = $_GET['periode2'];
 // var_dump($periode);
 // die;
 echo '<h5><span class="fas fa-table"></span> Laporan Hasil Perankingan</h5><hr>';
-if (count(data_alternatif()) > 0 && count(hasilall($periode)) > 0) {
+if (count(data_alternatif()) > 0 && count(hasilall($periode, $periode2)) > 0) {
 
 ?>
 
@@ -14,15 +15,18 @@ if (count(data_alternatif()) > 0 && count(hasilall($periode)) > 0) {
             <th>Ranking</th>
             <th>Alternatif</th>
             <th>Nilai</th>
+            <th>Periode</th>
         </tr>
         <?php $no = 1;
 
-        foreach (hasilall($periode) as $y) {
+        foreach (hasilall($periode, $periode2) as $y) {
             echo "<td>$no</td>";
             $nama = $y['nama'];
             $hasil = $y['hasil'];
+            $periode3 = $y['periode'];
             echo "<td>$nama</td>";
             echo "<td>$hasil</td>";
+            echo "<td>$periode3</td>";
             echo '</tr>';
             $no++;
         }
@@ -30,7 +34,7 @@ if (count(data_alternatif()) > 0 && count(hasilall($periode)) > 0) {
 
         ?>
     </table>
-    <button class="btn btn-primary" onclick="location.href='./laporan-cetak-hasil-rangking?periode=<?php echo $periode; ?>'"><span class="fas fa-radiation"></span> Cetak Laporan</button>
+    <button class="btn btn-primary" onclick="location.href='./laporan-cetak-hasil-rangking?periode=<?php echo $periode; ?>&periode2=<?php echo $periode2; ?>'"><span class="fas fa-radiation"></span> Cetak Laporan</button>
 <?php
 } else {
     if (count(data_kriteria()) < 1) echo '<div class="alert alert-dismissable alert-danger"><b>Data kriteria kosong</b>, silahkan hubungi Petugas.</div>';

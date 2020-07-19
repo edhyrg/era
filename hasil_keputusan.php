@@ -2,7 +2,6 @@
 akses_pengguna(array(1));
 include './includes/header.php';
 @$periode = $_GET['periode'];
-
 ?>
 <h5><span class="fas fa-table"></span> Data Hasil Keputusan</h5>
 <hr>
@@ -14,11 +13,11 @@ include './includes/header.php';
         <th>Pilih</th>
     </tr>
     <?php $no = 1;
-    foreach (gethasil($periode) as $x) {
+    foreach (gethasil($periode,) as $x) {
         echo "<tr>";
         echo "<td class=\"text-center\">$no</td><td>{$x[1]}</td><td class=\"text-center\">{$x[2]}</td><td class=\"text-center\"> ";
         if ($x[3] == '0') {
-            echo "<button onclick=\"location.href='./updatehasil?id={$x[0]}{$periode}'\" class=\"btn btn-success\"><span class=\"fas fa-check\"></span> Pilih</button></td>";
+            echo "<button onclick=\"location.href='./updatehasil?id={$x[0]}&periode={$periode}'\" class=\"btn btn-success\"><span class=\"fas fa-check\"></span> Pilih</button></td>";
         } else if ($x[3] == '1') {
             echo "<a>Terpilih</a>";
         }

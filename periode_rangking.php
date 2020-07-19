@@ -13,6 +13,13 @@ akses_pengguna(array(1));
             }
             ?>
         </select>
+        Sampai
+        <select required class="form-control required" id="periode2" name="periode" 2>
+            <?php foreach (periode() as $x) {
+                echo "<option$s value=\"{$x['periode']}\">{$x['periode']}</option>";
+            }
+            ?>
+        </select>
     </div>
     <button class="btn btn-primary" id="pilih"><span class="fas fa-radiation"></span> Pilih</button>
 </div>
@@ -20,8 +27,10 @@ akses_pengguna(array(1));
     $(document).ready(function() {
         $('#pilih').on('click', function() {
             var periode = $('#periode option:selected').val();
+            var periode2 = $('#periode2 option:selected').val();
             var url = './laporan-hasil-perankingan?';
             url += '&periode=' + periode;
+            url += '&periode2=' + periode2;
             window.location = url;
             return (false);
         });

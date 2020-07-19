@@ -9,7 +9,15 @@ akses_pengguna(array(1));
     <div class="form-group"><label>PERIODE</label><br>
         <select required class="form-control required" id="periode" name="periode">
             <?php foreach (periode() as $x) {
-                echo "<option$s value=\"{$x['periode']}\">{$x['periode']}</option>";
+                echo "<option $s value=\"{$x['periode']}\">{$x['periode']}</option>";
+            }
+            ?>
+        </select>
+        <a>Sampai</a>
+        <br>
+        <select required class="form-control required" id="periode2" name="periode2">
+            <?php foreach (periode() as $x) {
+                echo "<option $s value=\"{$x['periode']}\">{$x['periode']}</option>";
             }
             ?>
         </select>
@@ -20,8 +28,10 @@ akses_pengguna(array(1));
     $(document).ready(function() {
         $('#pilih').on('click', function() {
             var periode = $('#periode option:selected').val();
+            var periode2 = $('#periode2 option:selected').val();
             var url = './laporan-hasil-keputusan?';
             url += '&periode=' + periode;
+            url += '&periode2=' + periode2;
             window.location = url;
             return (false);
         });

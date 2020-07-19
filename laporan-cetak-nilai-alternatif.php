@@ -1,6 +1,12 @@
 <?php
 require('includes/fpdf/fpdf.php');
 @$periode = $_GET['periode'];
+@$periode2 = $_GET['periode2'];
+if ($periode != $periode2) {
+	$periode3 = $periode . '-' . $periode2;
+} else {
+	$periode3 = $periode;
+}
 
 class PDF extends FPDF
 {
@@ -37,8 +43,8 @@ $pdf->Cell(30, 10, 'LAPORAN HASIL EVALUASI SUPPLIER', 0, 0, 'C');
 $pdf->ln();
 $pdf->SetFont('Times', 'B', 12);
 $date = date("d-m-Y");
-$pdf->Cell(16, 10, 'periode :', 0, 0, 'L');
-$pdf->Cell(150, 10, $periode, 0, 0, 'L');
+$pdf->Cell(16, 10, 'Periode : ', 0, 0, 'L');
+$pdf->Cell(150, 10, $periode3, 0, 0, 'L');
 $pdf->ln();
 $pdf->ln();
 $pdf->Cell(7, 7, 'No', 1, 0, 'C');
@@ -48,14 +54,14 @@ $pdf->Cell(40, 7, 'Kriteria/Alternatif', 1, 0, 'C');
 include './includes/api.php';
 // include './includes/header.php';
 akses_pengguna(array(1));
-if (count(data_alternatif2($periode)) > 0) {
+if (count(data_alternatif2($periode, $periode2)) > 0) {
 	foreach (data_kriteria() as $x) {
 		$pdf->Cell(25, 7, $x[1], 1, 0, 'C');
 	}
 	$pdf->ln();
 	$pdf->SetFont('Times', '', 12);
 	$no = 1;
-	foreach (data_alternatif2($periode) as $x) {
+	foreach (data_alternatif2($periode, $periode2) as $x) {
 		$pdf->Cell(7, 7, $no, 1, 0, 'C');
 		$pdf->Cell(40, 7, $x[1], 1, 0, 'L');
 		foreach (data_kriteria() as $y) {
@@ -65,6 +71,15 @@ if (count(data_alternatif2($periode)) > 0) {
 		$pdf->ln();
 		$no++;
 	}
+	$pdf->ln();
+	$pdf->ln();
+	$pdf->ln();
+	$pdf->Cell(160, 7, 'Pimpinan Chanipil Collection', 0, 0, 'R');
+	$pdf->ln();
+	$pdf->ln();
+	$pdf->ln();
+	$pdf->ln();
+	$pdf->Cell(145, 7, 'Umar Aziz', 0, 0, 'R');
 } else {
 	if (count(data_kriteria()) < 1) echo '<div class="alert alert-dismissable alert-danger"><b>Data kriteria kosong</b>, silahkan hubungi Petugas.</div>';
 	if (count(data_alternatif()) < 1) echo '<div class="alert alert-dismissable alert-danger"><b>Data alternatif kosong</b>, silahkan hubungi Petugas.</div>';
