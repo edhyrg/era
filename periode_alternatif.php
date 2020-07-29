@@ -6,9 +6,12 @@ akses_pengguna(array(1));
 <hr>
 
 <div class="col-md-6">
-    <div class="form-group"><label>PERIODE</label><br>
-        <input type="text" id="thn" name="thn" class="form-control" placeholder="Isi Tahun" />
-    </div>
+    <select required class="form-control required" id="periode" name="periode">
+        <?php foreach (periode() as $x) {
+            echo "<option$s value=\"{$x['periode']}\">{$x['periode']}</option>";
+        }
+        ?>
+    </select>
     <button class="btn btn-primary" id="pilih"><span class="fas fa-radiation"></span> Pilih</button>
 </div>
 <script>
