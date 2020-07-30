@@ -25,5 +25,5 @@ include './includes/header.php';
         $no++;
     } ?>
 </table>
-<button class="btn btn-primary" onclick="location.href='./laporan-surat-keputusan?periode=<?php echo $periode; ?>'"><span class="fas fa-print"></span> Cetak Surat Keputusan</button>
+<button class="btn btn-primary" onclick="location.href='./laporan-surat-keputusan?periode=<?php echo $periode; ?>'"><span class="fas fa-print"></span> Cetak Hasil Keputusan</button>
 <?php include './includes/footer.php'; ?>

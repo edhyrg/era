@@ -33,7 +33,7 @@ $pdf->AddPage();
 $pdf->SetFont('Times', 'B', 14);
 $pdf->ln();
 $pdf->Cell(80);
-$pdf->Cell(30, 10, 'SURAT HASIL KEPUTUSAN', 0, 0, 'C');
+$pdf->Cell(30, 10, 'HASIL KEPUTUSAN', 0, 0, 'C');
 $pdf->ln();
 $pdf->SetFont('Times', '', 12);
 $date = date("d-m-Y");
