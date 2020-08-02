@@ -93,7 +93,7 @@ function data_alternatif()
 function data_alternatif2($periode, $periode2)
 {
     global $conn;
-    $q = $conn->prepare("SELECT a.*, b.periode FROM alternatif a join nilai_alternatif b WHERE b.periode between $periode and $periode2 group by ");
+    $q = $conn->prepare("SELECT a.*, b.periode FROM alternatif a join nilai_alternatif b WHERE b.periode between $periode and $periode2 group by id_alternatif");
     $q->execute();
     return @$q->fetchAll();
 }
@@ -172,6 +172,15 @@ function nilai_alternatif($a, $k, $periode)
 {
     global $conn;
     $q = $conn->prepare("SELECT * FROM nilai_alternatif WHERE alternatif='$a' AND kriteria='$k' and periode='$periode'");
+    $q->execute();
+    @$data = $q->fetchAll()[0][2];
+    if ($data) return $data;
+    else return 0;
+}
+function nilai_alternatif2($a, $k, $periode1, $periode2)
+{
+    global $conn;
+    $q = $conn->prepare("SELECT * FROM nilai_alternatif WHERE alternatif='$a' AND kriteria='$k' and periode between '$periode1' and '$periode2' ");
     $q->execute();
     @$data = $q->fetchAll()[0][2];
     if ($data) return $data;

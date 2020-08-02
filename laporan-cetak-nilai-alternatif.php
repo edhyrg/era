@@ -65,7 +65,7 @@ if (count(data_alternatif2($periode, $periode2)) > 0) {
 		$pdf->Cell(7, 7, $no, 1, 0, 'C');
 		$pdf->Cell(40, 7, $x[1], 1, 0, 'L');
 		foreach (data_kriteria() as $y) {
-			$n = nilai_alternatif($x[0], $y[0]);
+			$n = nilai_alternati2($x[0], $y[0], $periode, $periode2);
 			$pdf->Cell(25, 7, $n, 1, 0, 'C');
 		}
 		$pdf->ln();
