@@ -18,7 +18,7 @@ if (!empty($_POST)) {
         if ($nilai == '') array_push($pesan_error, 'Nilai Alternatif tidak boleh kosong');
         // $kriteria = $_POST['kriteria'];
         if (empty($pesan_error)) {
-            $q = $conn->prepare("INSERT INTO nilai_alternatif VALUE ('$idn','$idk', '$nilai')");
+            $q = $conn->prepare("INSERT INTO nilai_alternatif VALUE ('$idn','$idk', '$nilai', '$periode')");
             $q->execute();
         }
     }

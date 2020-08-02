@@ -8,9 +8,8 @@ if (!empty($_POST)) {
     if ($nama == '') array_push($pesan_error, 'Nama Alternatif tidak boleh kosong');
     $alamat = $_POST['alamat'];
     $telp = $_POST['telp'];
-    $periode = $_POST['periode'];
     if (empty($pesan_error)) {
-        $q = $conn->prepare("INSERT INTO alternatif VALUE (NULL, '$nama', '$alamat', '$telp', '$periode')");
+        $q = $conn->prepare("INSERT INTO alternatif VALUE (NULL, '$nama', '$alamat', '$telp')");
         $q->execute();
         header('Location: ./data-alternatif');
     }
@@ -26,8 +25,6 @@ include './includes/header.php';
         <input id="alamat" name="alamat" class="form-control mb-2 mr-sm-2" type="text">
         <label class="mr-sm-2" for="telp">No. Telp</label>
         <input id="telp" name="telp" class="form-control mb-2 mr-sm-2" type="text">
-        <label class="mr-sm-2" for="periode">Periode</label>
-        <input id="periode" name="periode" class="form-control mb-2 mr-sm-2" type="text">
         <button class="btn btn-primary" type="submit"><span class="fas fa-plus-circle"></span> Tambah</button>
         <button class="btn btn-danger" type="reset" onclick="location.href='./data-alternatif'"><span class="fas fa-times"></span> Batal</button>
         <?php if (!empty($pesan_error)) {

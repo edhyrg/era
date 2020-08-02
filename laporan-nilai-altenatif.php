@@ -10,6 +10,7 @@ if (count(data_alternatif2($periode, $periode2)) > 0 & count(data_kriteria()) > 
         <tr class="text-center">
             <th>No</th>
             <th>Alternatif</th>
+            <th>Periode</th>
             <?php
             foreach (data_kriteria() as $x) echo "<th>{$x[1]}</th>";
             ?>
@@ -17,9 +18,9 @@ if (count(data_alternatif2($periode, $periode2)) > 0 & count(data_kriteria()) > 
         </tr>
         <?php $no = 1;
         foreach (data_alternatif2($periode, $periode2) as $x) {
-            echo "<tr><td class=\"text-center\">$no</td><td>{$x[1]}</td>";
+            echo "<tr><td class=\"text-center\">$no</td><td>{$x[1]}</td><td>{$x[4]}</td>";
             foreach (data_kriteria() as $y) {
-                $n = nilai_alternatif($x[0], $y[0]);
+                $n = nilai_alternatif($x[0], $y[0], $periode);
                 echo "<td>$n</td>";
             }
             // echo "<td class=\"text-center\"><button onclick=\"location.href='./tambah-nilai?id={$x[0]}'\" class=\"btn btn-primary\"><span class=\"fas fa-plus\"></span> Tambah</button> <button onclick=\"hapus_nilai('{$x[0]}')\" class=\"btn btn-danger\"><span class=\"fas fa-trash-alt\"></span> Hapus</button></td>";

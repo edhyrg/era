@@ -93,14 +93,14 @@ function data_alternatif()
 function data_alternatif2($periode, $periode2)
 {
     global $conn;
-    $q = $conn->prepare("SELECT * FROM alternatif WHERE periode between $periode and $periode2");
+    $q = $conn->prepare("SELECT a.*, b.periode FROM alternatif a join nilai_alternatif b WHERE b.periode between $periode and $periode2 group by ");
     $q->execute();
     return @$q->fetchAll();
 }
 function data_alternatif3($periode)
 {
     global $conn;
-    $q = $conn->prepare("SELECT * FROM alternatif WHERE periode=$periode");
+    $q = $conn->prepare("SELECT a.*, b.periode FROM alternatif a join nilai_alternatif b on a.id_alternatif=b.alternatif WHERE b.periode=$periode group by a.id_alternatif");
     $q->execute();
     return @$q->fetchAll();
 }
@@ -168,10 +168,10 @@ function bobot_kriteria($k1, $k2)
     } else return false;
 }
 
-function nilai_alternatif($a, $k)
+function nilai_alternatif($a, $k, $periode)
 {
     global $conn;
-    $q = $conn->prepare("SELECT * FROM nilai_alternatif WHERE alternatif='$a' AND kriteria='$k'");
+    $q = $conn->prepare("SELECT * FROM nilai_alternatif WHERE alternatif='$a' AND kriteria='$k' and periode='$periode'");
     $q->execute();
     @$data = $q->fetchAll()[0][2];
     if ($data) return $data;
@@ -190,7 +190,7 @@ function data_nilai_alternatif()
 function periode()
 {
     global $conn;
-    $q = $conn->prepare("SELECT periode FROM alternatif group by periode");
+    $q = $conn->prepare("SELECT periode FROM nilai_alternatif group by periode");
     $q->execute();
     @$data = $q->fetchAll();
     if ($data) return $data;

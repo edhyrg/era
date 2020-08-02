@@ -37,9 +37,7 @@ $pdf->Cell(30, 10, 'HASIL KEPUTUSAN', 0, 0, 'C');
 $pdf->ln();
 $pdf->SetFont('Times', '', 12);
 $date = date("d-m-Y");
-$pdf->Cell(16, 10, 'periode :', 0, 0, 'L');
-$pdf->Cell(150, 10, $periode, 0, 0, 'L');
-$pdf->ln();
+
 $pdf->ln();
 $pdf->Cell(60, 7, 'Berdasarkan perhitungan penilaian supplier, maka supplier dengan data', 0, 0, 'L');
 $pdf->ln();
@@ -61,7 +59,7 @@ if (count(data_alternatif()) > 0 && count(hasil2($periode)) > 0) {
 	$telp = "No. Telp                 : " . $guru[0]['telp'];
 	$hasil = "Hasil                       : " . $guru[0]['hasil'];
 
-	$ket = "Menyatakan bahwa supplier tersebut terpilih sebagai Supplier Terbaik";
+	$ket = "Menyatakan bahwa supplier tersebut terpilih sebagai Supplier Terbaik pada periode $periode";
 	$pdf->Cell(90, 7, $id, 0, 0, 'L');
 	$pdf->ln();
 	$pdf->Cell(90, 7, $nama, 0, 0, 'L');

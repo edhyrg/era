@@ -10,13 +10,12 @@ include './includes/header.php';
         <th>Nama Alternatif</th>
         <th>Alamat</th>
         <th>No. Telp</th>
-        <th>Periode</th>
         <th>Aksi</th>
     </tr>
     <?php $no = 1;
     foreach (data_alternatif() as $x) {
         echo "<tr>";
-        echo "<td class=\"text-center\">$no</td><td>{$x[1]}</td><td class=\"text-center\">{$x[2]}</td><td class=\"text-center\">{$x[3]}</td><td class=\"text-center\">{$x[4]}</td><td class=\"text-center\"><button onclick=\"location.href='./edit-alternatif?id={$x[0]}'\" class=\"btn btn-primary\"><span class=\"fas fa-pen\"></span> Edit</button> <button onclick=\"hapus_alternatif('{$x[0]}')\" class=\"btn btn-danger\"><span class=\"fas fa-trash-alt\"></span> Hapus</button></td>";
+        echo "<td class=\"text-center\">$no</td><td>{$x[1]}</td><td class=\"text-center\">{$x[2]}</td><td class=\"text-center\">{$x[3]}</td><td class=\"text-center\"><button onclick=\"location.href='./edit-alternatif?id={$x[0]}'\" class=\"btn btn-primary\"><span class=\"fas fa-pen\"></span> Edit</button> <button onclick=\"hapus_alternatif('{$x[0]}')\" class=\"btn btn-danger\"><span class=\"fas fa-trash-alt\"></span> Hapus</button></td>";
         echo '</tr>';
         $no++;
     } ?>

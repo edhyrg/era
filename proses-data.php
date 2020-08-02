@@ -21,7 +21,7 @@ $q->execute();
     foreach (data_alternatif3($periode) as $x) {
         echo "<tr><td>{$x[1]}</td>";
         foreach (data_kriteria() as $y) {
-            $n = nilai_alternatif($x[0], $y[0]);
+            $n = nilai_alternatif($x[0], $y[0], $periode);
             echo "<td>$n</td>";
             $data[$y[0]][$x[0]] = $n;
         }
@@ -44,8 +44,8 @@ $q->execute();
     foreach (data_alternatif3($periode) as $x) {
         echo "<tr><td>{$x[1]}</td>";
         foreach (data_kriteria() as $y) {
-            if ($y[2] == 1) $n = round(nilai_alternatif($x[0], $y[0]) / max($data[$y[0]]), 4);
-            else $n = round(min($data[$y[0]]) / nilai_alternatif($x[0], $y[0]), 4);
+            if ($y[2] == 1) $n = round(nilai_alternatif($x[0], $y[0], $periode) / max($data[$y[0]]), 4);
+            else $n = round(min($data[$y[0]]) / nilai_alternatif($x[0], $y[0], $periode), 4);
             echo "<td>$n</td>";
             $data_normalisasi[$y[0]][$x[0]] = $n;
             $data_hasil[$x[0]][$y[0]] = $n * $y[3];
