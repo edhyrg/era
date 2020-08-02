@@ -27,23 +27,23 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="fas fa-bars"></span> Kriteria
+                            <span class="fas fa-bars"></span> Master
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="./data-kriteria" id="data-kriteria"><span class="fas fa-table"></span> Data Kriteria</a>
-                            <a class="dropdown-item" href="./perbandingan-kriteria" id="perbandingan-kriteria"><span class="fas fa-sliders-h"></span> Perbandingan Kriteria</a>
+                            <a class="dropdown-item" href="./data-kriteria" id="data-kriteria"><span class="fas fa-table"></span> Entri Data Kriteria</a>
+                            <a class="dropdown-item" href="./data-alternatif" id="data-alternatif"><span class="fas fa-users"></span> Entri Data Alternatif</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="fas fa-bars"></span> Alternatif
+                            <span class="fas fa-bars"></span> Proses
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="./data-alternatif" id="data-alternatif"><span class="fas fa-users"></span> Data Alternatif</a>
+                            <a class="dropdown-item" href="./perbandingan-kriteria" id="perbandingan-kriteria"><span class="fas fa-sliders-h"></span> Entri Bobot Kriteria</a>
                             <!-- <a class="dropdown-item" href="./data-nilai" id="data-nilai"><span class="fas fa-table"></span>Tambah Nilai Alternatif</a>
                             <a class="dropdown-item" href="./upload-data-alternatif" id="upload-data-alternatif"><span class="fas fa-upload"></span> Upload Data Alternatif</a> -->
-                            <a class="dropdown-item" href="./periode_alternatif" id="periode_alternatif"><span class="fas fa-table"></span> Nilai Alternatif</a>
-                            <a class="dropdown-item" href="./periode_hasil" id="periode_hasil"><span class="fas fa-table"></span> Hasil Keputusan</a>
+                            <a class="dropdown-item" href="./periode_alternatif" id="periode_alternatif"><span class="fas fa-table"></span> Entri Nilai Alternatif</a>
+                            <a class="dropdown-item" href="./periode_hasil" id="periode_hasil"><span class="fas fa-table"></span> Cetak Hasil Keputusan</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -51,9 +51,9 @@
                             <span class="fas fa-bars"></span> Laporan
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="./periode_keputusan" id="periode_keputusan"><span class="fas fa-users"></span> Laporan Hasil Keputusan</a>
-                            <a class="dropdown-item" href="./periode_rangking" id="periode_rangking"><span class="fas fa-table"></span> Laporan Hasil Perangkingan</a>
-                            <a class="dropdown-item" href="./periode_evaluasi" id="periode_evaluasi"><span class="fas fa-users"></span> Laporan Evaluasi Supplier</a>
+                            <a class="dropdown-item" href="./periode_keputusan" id="periode_keputusan"><span class="fas fa-users"></span> Cetak Laporan Hasil Pemilihan Supplier</a>
+                            <a class="dropdown-item" href="./periode_rangking" id="periode_rangking"><span class="fas fa-table"></span> Cetak Laporan Hasil Perangkingan Supplier</a>
+                            <a class="dropdown-item" href="./periode_evaluasi" id="periode_evaluasi"><span class="fas fa-users"></span> Cetak Laporan Penilaian Supplier</a>
                         </div>
                     </li>
                     <li class="nav-item" id="manajemen-pengguna">
